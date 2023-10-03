@@ -16,7 +16,7 @@
         <canvas id="angleCanvas" height="500" width="500">
         </canvas>
 
-        <form>
+        <form onsubmit="CheckResult();return false">
             <input type="number" id="guess" placeholder="Guess the angle" min="0" max="360">
             <input type="button" value="Submit" onclick="CheckResult()">
         </form>
