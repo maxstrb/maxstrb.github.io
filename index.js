@@ -27,8 +27,7 @@ function CheckResult() {
 }
 
 function ResetGuesses(){
-    let ul = document.getElementById("attempts");
-    ul.innerHTML = '';
+    document.getElementById("attempts").innerHTML = '';
 }
 
 function DrawRandomAngle() {
