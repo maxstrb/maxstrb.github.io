@@ -1,7 +1,4 @@
 function CheckResult() {
-    if (currentDone){
-        return;
-    }
     const up = '▲';
     const down = '▼';
 
@@ -22,11 +19,6 @@ function CheckResult() {
 
         document.getElementById("averageGuessCount").innerHTML = "Average guess count: " + (attemptsList.reduce((a, b) => a + b, 0) / attemptsList.length).toFixed(2) + " attempts";
 
-        let li = document.createElement("li");
-        li.appendChild(document.createTextNode("✓"));
-        ul.appendChild(li);
-
-        currentDone = true;
         alert("You won!");
         
         document.getElementById("attempts").innerHTML = '';
@@ -40,7 +32,6 @@ function DrawRandomAngle() {
     const lineLenght = 250;
 
     currentAttempt = 1;
-    currentDone = false;
 
     let canvas = document.getElementById("angleCanvas");
     let ctx = canvas.getContext("2d");
@@ -87,7 +78,6 @@ function drawLine(ctx, begin, end, stroke = '#c75252', width = 3) {
 
 let currentAngle = 0;
 let currentAttempt = 1;
-let currentDone = false;
 let attemptsList = [];
 
 window.onload = () => {
