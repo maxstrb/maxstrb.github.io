@@ -32,6 +32,7 @@ function ResetGuesses(){
 
 function DrawRandomAngle() {
     currentAttempt = 1;
+currentDone = false;
 
     // Free to edit
     const lineLenght = 250;
