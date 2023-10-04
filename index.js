@@ -1,4 +1,7 @@
 function CheckResult() {
+    if (currentDone){
+        return;
+    }
     const up = '▲';
     const down = '▼';
 
@@ -21,6 +24,11 @@ function CheckResult() {
 
         alert("You won!");
     }
+}
+
+function ResetGuesses(){
+    let ul = document.getElementById("attempts");
+    ul.innerHTML = '';
 }
 
 function DrawRandomAngle() {
