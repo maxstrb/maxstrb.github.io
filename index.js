@@ -1,4 +1,5 @@
 function CheckResult() {
+alert(currentDone)
     if (currentDone){
         return;
     }
