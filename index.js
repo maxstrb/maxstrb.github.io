@@ -1,5 +1,4 @@
 function CheckResult() {
-alert(currentDone)
     if (currentDone){
         return;
     }
@@ -29,6 +28,7 @@ alert(currentDone)
 
 function ResetGuesses(){
     document.getElementById("attempts").innerHTML = '';
+DrawRandomAngle();
 }
 
 function DrawRandomAngle() {
