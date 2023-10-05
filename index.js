@@ -17,13 +17,20 @@ function CheckResult() {
         attemptsList.push(currentAttempt);
         currentAttempt = 1;
 
-        document.getElementById("averageGuessCount").innerHTML = "Average guess count: " + (attemptsList.reduce((a, b) => a + b, 0) / attemptsList.length).toFixed(2) + " attempts";
+        document.getElementById("averageGuessCount").innerHTML = "Average guess count: " + (attemptsList.reduce((a, b) => a + b, 0) / attemptsList.length).toFixed(2) + " Out of " + attemptsList.length + " attempts.";
 
         alert("You won!");
         
         document.getElementById("attempts").innerHTML = '';
         DrawRandomAngle();
     }
+}
+
+function NewAngle(){
+    document.getElementById("attempts").innerHTML = '';
+    currentAttempt = 1;
+
+    DrawRandomAngle();
 }
 
 function DrawRandomAngle() {
