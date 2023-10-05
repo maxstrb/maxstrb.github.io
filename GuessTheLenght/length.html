@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Guess The Length</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="length.css">
+        <script src="length.js"></script>
+    </head>
+
+    <body>
+        <nav>
+            <a href="../index.html">Guess The Angle</a>
+        </nav>
+
+        <main>
+            <h1>Guess The Length</h1>
+            
+            <section>
+                <h2>Instructions</h2>
+                <p>Guess the length of the line in tenths of units. Enter your guess in the input field below and click "Check".</p>
+            </section>
+
+            <section>
+                <p>Base unit: </p>
+                <canvas id="baseLineCanvas" width="500" height="20"></canvas>
+                <canvas id="lineCanvas" width="500" height="20"></canvas>
+
+                <form onsubmit="CheckResult();return false">
+                    <input type="number" step="0.1" id="guess-input" name="guess-input" placeholder="Guess the length" min="0" max="10"required>
+                    <button type="submit" id="check-button">Check</button>
+                </form>
+            </section>
+
+            <ul id="attempts"></ul>
+            <p id="averageGuessCount"></p>
+
+        </main>
+    </body>
+</html>

@@ -38,13 +38,13 @@ function DrawRandomAngle() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     let angle = Math.floor(Math.random() * 360);
-    let angleInRadians = angle * Math.PI / 180;
+    let angleInRadians = -angle * Math.PI / 180;
     
     drawLine(ctx, [canvas.width/2, canvas.height/2], [canvas.width/2+lineLenght, canvas.height/2]);
     drawArc(ctx,  [canvas.width/2, canvas.height/2], arcRadius, angleInRadians, 0);
     drawLine(ctx, [canvas.width/2, canvas.height/2], [canvas.width/2 + lineLenght * Math.cos(angleInRadians), canvas.height/2 + lineLenght * Math.sin(angleInRadians)]);
     
-    currentAngle = 360 - angle;
+    currentAngle = angle;
 }
 
 function drawArc(ctx, center, radius, startAngle, endAngle, stroke = '#c75252', width = 3) {

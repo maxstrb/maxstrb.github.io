@@ -1,0 +1,53 @@
+body {
+    font-family: system-ui;
+    background: #0d1212;
+    color: #f6fdfd;
+    text-align: center;
+}
+  
+h1{
+    font-size: 50px;
+}
+
+p{
+    font-size: 25px;
+    color: #f6fdfd;
+}
+
+input{
+    font-size: 25px;
+    width: 220px;
+    height: 45px;
+    border-radius: 10px;
+    border: 0;
+    margin: 10px;
+    padding: 10px;
+    background: #1A4054;
+    color: #f6fdfd;
+}
+
+canvas{
+    display: block;
+    margin: 0 auto;
+}
+
+button{
+    font-size: 25px;
+    width: 220px;
+    height: 45px;
+    border-radius: 10px;
+    border: 0;
+    margin: 10px;
+    padding: 10px;
+    background: #1A4054;
+    color: #f6fdfd;
+}
+
+#attempts{
+    font-size: 50px;
+    padding: 0 0 0 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
