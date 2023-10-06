@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Guess The Color</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="color.css">
+        <script src="color.js"></script>
+    </head>
+
+    <body>
+        <nav class="nav">
+            <a href="../index.html">Guess The Angle</a>
+            <a href="../GuessTheLenght/length.html">Guess The Length</a>
+        </nav>
+
+        <main>
+            <h1>Guess The Color</h1>
+            
+            <section>
+                <h2>Instructions</h2>
+                <p>Guess the shown color, enter its rgb value.</p>
+            </section>
+
+            <section>
+                <canvas id="colorCanvas" width="300" height="300" style="margin-bottom: 30px;"></canvas>
+
+                <form onsubmit="CheckResult();return false;">
+                    <input type="number" placeholder="Enter red value" min="0" max="255" id="red-channel" required>
+                    <input type="number" placeholder="Enter green value" min="0" max="255" id="green-channel" required>
+                    <input type="number" placeholder="Enter blue value" min="0" max="255" id="blue-channel" required>
+                    <br>
+                    <input type="submit" value="Submit">
+                </form>
+            </section>
+
+            <canvas id="guessedColorCanvas" width="50" height="50"></canvas>
+            <p id="averageGuessCount"></p>
+
+        </main>
+    </body>
+</html>

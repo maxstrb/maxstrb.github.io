@@ -1,67 +1,69 @@
 function CheckResult() {
+    const guess = parseInt(document.getElementById("guess-input").value);
+    const guessIsCorrect = guess === currentAngle;
+
+    console.log(`Guess: ${guess}, correct: ${currentAngle}, isCorrect: ${guessIsCorrect}`);
+
+    if (guessIsCorrect) CorrectGuess();
+
+    else FailedGuess(guess);
+}
+
+function CorrectGuess(){
+    const averareCountParagraph = document.getElementById("averageGuessCount");
+    
+    guessHistory.push(currentAttemptCount);
+    const averageAttemptCount = (sum(guessHistory)/guessHistory.length).toFixed(2);
+    const numberOfAttempts = guessHistory.length;
+
+    const s = numberOfAttempts>1?'s':'';
+
+    averareCountParagraph.innerHTML = `Average guess count: ${averageAttemptCount}<br>Out of ${numberOfAttempts} attempt${s}`;
+    alert("You won!");
+    
+    NewAngle();
+}
+
+function FailedGuess(guess){
+    const attemptShower = document.getElementById("attempts");
+    let currentAttemptShower = document.createElement("li");
+
     const up = '▲';
     const down = '▼';
 
-    const ul = document.getElementById("attempts");
-    const guess = document.getElementById("guess").value;
+    currentAttemptShower.appendChild(document.createTextNode(guess<currentAngle? up:down));
+    attemptShower.appendChild(currentAttemptShower);
 
-    if (guess != currentAngle) {
-        let li = document.createElement("li");
-        li.appendChild(document.createTextNode(guess<currentAngle?up:down));
-        ul.appendChild(li);
-
-        currentAttempt++;
-    }
-
-    else{
-        attemptsList.push(currentAttempt);
-        currentAttempt = 1;
-
-        document.getElementById("averageGuessCount").innerHTML = "Average guess count: " + (attemptsList.reduce((a, b) => a + b, 0) / attemptsList.length).toFixed(2) + " Out of " + attemptsList.length + " attempts.";
-
-        alert("You won!");
-        
-        document.getElementById("attempts").innerHTML = '';
-        DrawRandomAngle();
-    }
+    currentAttemptCount++;
 }
 
 function NewAngle(){
     document.getElementById("attempts").innerHTML = '';
-    currentAttempt = 1;
+    currentAttemptCount = 1;
 
     DrawRandomAngle();
 }
 
 function DrawRandomAngle() {
-    // Free to edit
     const arcRadius = 40;
     const lineLenght = 250;
-
-    currentAttempt = 1;
 
     let canvas = document.getElementById("angleCanvas");
     let ctx = canvas.getContext("2d");
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    let angle = Math.floor(Math.random() * 360);
-    let angleInRadians = -angle * Math.PI / 180;
+    currentAngle = randomNumber(0, 360, 1);
+    let angleInRadians = -currentAngle * Math.PI / 180;
     
     drawLine(ctx, [canvas.width/2, canvas.height/2], [canvas.width/2+lineLenght, canvas.height/2]);
     drawArc(ctx,  [canvas.width/2, canvas.height/2], arcRadius, angleInRadians, 0);
     drawLine(ctx, [canvas.width/2, canvas.height/2], [canvas.width/2 + lineLenght * Math.cos(angleInRadians), canvas.height/2 + lineLenght * Math.sin(angleInRadians)]);
-    
-    currentAngle = angle;
 }
 
 function drawArc(ctx, center, radius, startAngle, endAngle, stroke = '#c75252', width = 3) {
-    if (stroke) {
-        ctx.strokeStyle = stroke;
-    }
+    if (stroke) ctx.strokeStyle = stroke;
     
-    if (width) {
-        ctx.lineWidth = width;
-    }
+    if (width) ctx.lineWidth = width;
     
     ctx.beginPath();
     ctx.arc(...center, radius, startAngle, endAngle);
@@ -69,13 +71,9 @@ function drawArc(ctx, center, radius, startAngle, endAngle, stroke = '#c75252', 
 }
 
 function drawLine(ctx, begin, end, stroke = '#c75252', width = 3) {
-    if (stroke) {
-        ctx.strokeStyle = stroke;
-    }
+    if (stroke) ctx.strokeStyle = stroke;
     
-    if (width) {
-        ctx.lineWidth = width;
-    }
+    if (width) ctx.lineWidth = width;
 
     ctx.beginPath();
     ctx.moveTo(...begin);
@@ -83,9 +81,17 @@ function drawLine(ctx, begin, end, stroke = '#c75252', width = 3) {
     ctx.stroke();
 }
 
+function sum(l){
+    return l.reduce((a, b) => a + b, 0);
+}
+
+function randomNumber(min, max, step){
+    return Math.floor(Math.random() * (max - min) / step) * step + min;
+}
+
 let currentAngle = 0;
-let currentAttempt = 1;
-let attemptsList = [];
+let currentAttemptCount = 1;
+let guessHistory = [];
 
 window.onload = () => {
     DrawRandomAngle();

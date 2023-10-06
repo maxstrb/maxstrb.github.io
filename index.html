@@ -8,8 +8,9 @@
     </head>
 
     <body>
-        <nav>
+        <nav class="nav">
             <a href="./GuessTheLenght/length.html">Guess the Lenght</a>
+            <a href="./GuessTheColor/color.html">Guess the Color</a>
         </nav>
 
         <main>
@@ -18,15 +19,15 @@
             <section>
                 <h2>Instructions</h2>
                 <p>Guess the angle of the line below. The angle is between 0 and 360 degrees.</p>
-                <button onclick="DrawRandomAngle()">New angle</button>
+                <button onclick="NewAngle()">New angle</button>
             </section>
 
             <section>
                 <canvas id="angleCanvas" height="500" width="500">
                 </canvas>
 
-                <form onsubmit="CheckResult();return false">
-                    <input type="number" id="guess" placeholder="Guess the angle" min="0" max="360" required>
+                <form onsubmit="CheckResult();return false;">
+                    <input type="number" id="guess-input" placeholder="Guess the angle" min="0" max="360" required>
                     <input type="submit" value="Submit">
                 </form>
             </section>

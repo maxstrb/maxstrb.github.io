@@ -1,61 +1,71 @@
-function CheckResult(){
+function CheckResult() {
+    const guess = parseFloat(document.getElementById("guess-input").value);
+    const guessIsCorrect = guess === currentLength;
+
+    if (guessIsCorrect) CorrectGuess();
+
+    else FailedGuess(guess);
+}
+
+function CorrectGuess(){
+    const averareCountParagraph = document.getElementById("averageGuessCount");
+    
+    guessHistory.push(currentAttemptCount);
+    const averageAttemptCount = sum(guessHistory)/guessHistory.length.toFixed(2);
+    const numberOfAttempts = guessHistory.length;
+
+    const s = numberOfAttempts>1?'s':'';
+
+    averareCountParagraph.innerHTML = `Average guess count: ${averageAttemptCount} Out of ${numberOfAttempts} attempt${s}`;
+    alert("You won!");
+    
+    NewLength();
+}
+
+function FailedGuess(guess){
+    const attemptShower = document.getElementById("attempts");
+    let currentAttemptShower = document.createElement("li");
+
     const up = '▲';
     const down = '▼';
 
-    const ul = document.getElementById("attempts");
-    const guess = document.getElementById("guess-input").value;
+    currentAttemptShower.appendChild(document.createTextNode(guess<currentLength? up:down));
+    attemptShower.appendChild(currentAttemptShower);
 
-    if (guess != currentLength){
-        let li = document.createElement("li");
-        li.appendChild(document.createTextNode(currentLength>guess?up:down));
-        ul.appendChild(li);
-
-        currentAttempt++;
-    }
-
-    else{
-        attemptsList.push(currentAttempt);
-        currentAttempt = 1;
-
-        document.getElementById("averageGuessCount").innerHTML = "Average guess count: " + (attemptsList.reduce((a, b) => a + b, 0) / attemptsList.length).toFixed(2) + " attempts";
-
-        alert("You won!");
-        
-        document.getElementById("attempts").innerHTML = '';
-        DrawRandomLength();
-    }
+    currentAttemptCount++;
 }
 
-function DrawRandomLength(){
-    currentAttempt = 1;
+function NewLength(){
+    document.getElementById("attempts").innerHTML = '';
+    currentAttemptCount = 1;
 
-    let currLInPx = Math.floor(Math.random() * 50) * 10;
-    currentLength = currLInPx/50;
+    DrawRandomLength();
+}
+
+function DrawRandomLength() {
+    const baseLineLenght = 50;
+    const maxLineLenghtMultiplier = 10;
 
     let baseCanvas = document.getElementById("baseLineCanvas");
     let canvas = document.getElementById("lineCanvas");
-    
+
     let baseCtx = baseCanvas.getContext("2d");
     let ctx = canvas.getContext("2d");
-    
     baseCtx.clearRect(0, 0, baseCanvas.width, baseCanvas.height);
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    let baseLineLength = 50;
-    
-    drawLine(baseCtx, [baseCanvas.width/2-baseLineLength/2, baseCanvas.height/2], [baseCanvas.width/2+baseLineLength/2, baseCanvas.height/2]);
-    drawLine(ctx, [canvas.width/2-currLInPx/2, canvas.height/2], [canvas.width/2+currLInPx/2, canvas.height/2]);
-    console.log("New length: " + currentLength);
+    currentLength = randomNumber(0, maxLineLenghtMultiplier, 0.1);
+
+    const lineLenght = baseLineLenght * currentLength;
+
+    drawLine(baseCtx, [baseCanvas.width/2 - baseLineLenght/2, baseCanvas.height/2], [baseCanvas.width/2 + baseLineLenght/2, baseCanvas.height/2]);
+    drawLine(ctx, [canvas.width/2 - lineLenght/2, canvas.height/2], [canvas.width/2 + lineLenght/2, canvas.height/2]);
 }
 
 function drawLine(ctx, begin, end, stroke = '#0ba2f4', width = 3) {
-    if (stroke) {
-        ctx.strokeStyle = stroke;
-    }
+    if (stroke) ctx.strokeStyle = stroke;
     
-    if (width) {
-        ctx.lineWidth = width;
-    }
+    if (width) ctx.lineWidth = width;
 
     ctx.beginPath();
     ctx.moveTo(...begin);
@@ -63,9 +73,22 @@ function drawLine(ctx, begin, end, stroke = '#0ba2f4', width = 3) {
     ctx.stroke();
 }
 
+function sum(l){
+    return l.reduce((a, b) => a + b, 0);
+}
+
+function randomNumber(min, max, step){
+    return round(Math.floor(Math.random() * (max - min) / step) * step + min, 1);
+}
+
+function round(value, precision) {
+    var multiplier = Math.pow(10, precision || 0);
+    return Math.round(value * multiplier) / multiplier;
+}
+
 let currentLength = 0;
-let currentAttempt = 1;
-let attemptsList = [];
+let currentAttemptCount = 1;
+let guessHistory = [];
 
 window.onload = () => {
     DrawRandomLength();

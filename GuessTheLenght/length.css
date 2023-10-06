@@ -3,6 +3,8 @@ body {
     background: #0d1212;
     color: #f6fdfd;
     text-align: center;
+    padding: 0;
+    margin: 0;
 }
   
 h1{
@@ -50,4 +52,29 @@ button{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+a{
+    font-size: 25px;
+    color: #f6fdfd;
+    text-decoration: none;
+    transition: 0.25s;
+    margin: 0 10px 0 10px;
+}
+
+a:hover{
+    color: #0ba2f4;
+}
+
+.nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #1A4054;
+    width: 100%;
+    height: 50px;
+    box-shadow: 0 0 10px 0 #1A4054;
 }
