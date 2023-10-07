@@ -11,7 +11,11 @@ function CheckResult() {
 }
 
 function evaluateGuess(guessRed, guessGreen, guessBlue) {
-    return guessRed == currentColor[0] && guessGreen == currentColor[1] && guessBlue == currentColor[2];
+    const errorTolerance = parseInt(document.getElementById("errorTolerance").value);
+
+    return Math.abs(guessRed - currentColor[0]) <= errorTolerance && 
+    Math.abs(guessGreen - currentColor[1]) <= errorTolerance && 
+    Math.abs(guessBlue - currentColor[2]) <= errorTolerance;
 }
 
 function CorrectGuess(){
@@ -59,6 +63,8 @@ function DrawRandomColor() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     currentAttemptCount++;
+
+    console.log(currentColor);
 }
 
 function sum(l){
