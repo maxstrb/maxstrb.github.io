@@ -16,6 +16,10 @@ p{
     color: #f6fdfd;
 }
 
+.current{
+    color: #0ba2f4;
+}
+
 input{
     font-size: 25px;
     width: 220px;

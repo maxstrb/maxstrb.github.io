@@ -11,7 +11,7 @@ function CorrectGuess(){
     const averareCountParagraph = document.getElementById("averageGuessCount");
     
     guessHistory.push(currentAttemptCount);
-    const averageAttemptCount = sum(guessHistory)/guessHistory.length.toFixed(2);
+    const averageAttemptCount = (sum(guessHistory)/guessHistory.length).toFixed(2);
     const numberOfAttempts = guessHistory.length;
 
     const s = numberOfAttempts>1?'s':'';

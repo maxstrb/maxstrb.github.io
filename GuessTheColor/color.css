@@ -6,6 +6,10 @@ body {
     padding: 0;
     margin: 0;
 }
+
+.current{
+    color: #3f992f;
+}
   
 h1{
     font-size: 50px;
