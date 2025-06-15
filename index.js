@@ -46,7 +46,7 @@ function NewAngle(){
 
 function DrawRandomAngle() {
     const arcRadius = 40;
-    const lineLenght = 250;
+    const lineLenght = 225;
 
     let canvas = document.getElementById("angleCanvas");
     let ctx = canvas.getContext("2d");

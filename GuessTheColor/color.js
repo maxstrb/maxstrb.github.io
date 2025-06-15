@@ -56,7 +56,7 @@ function DrawRandomColor() {
     const canvas = document.getElementById("colorCanvas");
     const ctx = canvas.getContext("2d");
 
-    canvas.style = `margin-bottom: 30px; box-shadow: 0px 0px 10px 10px rgba(${currentColor[0]}, ${currentColor[1]}, ${currentColor[2]}, 1);`;
+    canvas.style = `margin-bottom: 30px;`;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = `rgb(${currentColor[0]}, ${currentColor[1]}, ${currentColor[2]})`;
