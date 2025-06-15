@@ -20,7 +20,7 @@ p{
     color: #f6fdfd;
 }
 
-input{
+.prettyInput{
     font-size: 25px;
     width: 220px;
     height: 45px;
@@ -28,6 +28,18 @@ input{
     border: 0;
     margin: 10px;
     padding: 10px;
+    background: #22441c;
+    color: #f6fdfd;
+}
+
+#errorTolerance{
+	font-size: 25px;
+    width: 220px;
+    height: 45px;
+    border-radius: 10px;
+    border: 0;
+    margin: 10px;
+    padding: 10px 0 10px 0;
     background: #22441c;
     color: #f6fdfd;
 }

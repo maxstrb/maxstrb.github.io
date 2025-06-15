@@ -23,7 +23,7 @@ p {
 	padding: 20px;
 }
 
-input {
+.pretty_input {
 	font-size: 25px;
 	width: 220px;
 	height: 45px;
@@ -42,10 +42,22 @@ input {
 	margin-bottom: 30px;
 }
 
-#guessed_color_canvas{
+#guessed_color_canvas {
 	width: 50px;
 	height: 50px;
 	margin: auto;
+}
+
+#error_tolerance {
+	font-size: 25px;
+	width: 220px;
+	height: 45px;
+	border-radius: 10px;
+	border: 0;
+	margin: 10px;
+	padding: 10px 0 10px 0;
+	background: #983df2;
+	color: #f6fdfd;
 }
 
 a {
