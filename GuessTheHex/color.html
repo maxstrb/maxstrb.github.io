@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Guess The Hex</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="color.css">
+		<script src="color.js"></script>
+	</head>
+
+	<body>
+		<nav>
+			<a href="../index.html">Guess The Angle</a>
+			<a href="../GuessTheLength/length.html">Guess The Length</a>
+			<a href="../GuessTheColor/color.html">Guess The Color</a>
+			<a href="../GuessTheHex/color.html" class="current">Guess The Hex</a>
+			<a href="../GuessTheShape/shape.html">Guess The Shape</a>
+		</nav>
+		
+		<main>
+			<h1>Guess The Hex</h1>
+
+			<section>
+				<h2>Instructions</h2>
+				<p>Guess the shown color, enter its hex value.</p>
+
+				<div style="display: flex; justify-content: center;">
+					<p>Error tolerance:</p>
+					<input type="range" id="error_tolerance" min="0" max="30" step="3" />
+				</div>
+			</section>
+
+			<section>
+				<div id="color_canvas"></div>
+
+				<form onsubmit="check_result();return false;">
+					<input type="text" placeholder="Enter hex value" pattern="^#[0-9a-f]{6}$" id="user_input" required>
+					<br>
+					<input type="submit" value="Submit">
+				</form>
+			</section>
+
+			<div id="guessed_color_canvas"></div>
+			<p id="avg_guess_count"></p>
+
+		</main>
+	</body>
+</html>			
